@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/cardview_dark_background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/txvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/titleCreation"
+        android:textSize="32sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txvUsername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/username"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txvTitle" />
+
+    <EditText
+        android:id="@+id/edtUsername"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:paddingStart="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="10dp"
+        android:textStyle="bold"
+        android:inputType="textEmailAddress"
+        android:background="@drawable/rounded_edittext"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txvUsername"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvUsername" />
+
+    <TextView
+        android:id="@+id/txvEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/email"
+        app:layout_constraintEnd_toEndOf="@+id/txvUsername"
+        app:layout_constraintTop_toBottomOf="@+id/txvUsername" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_edittext"
+        android:inputType="textEmailAddress"
+        android:paddingStart="10dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="10dp"
+        android:paddingBottom="5dp"
+        android:textStyle="bold"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txvEmail"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvEmail" />
+
+    <TextView
+        android:id="@+id/txvPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/password"
+        app:layout_constraintEnd_toEndOf="@+id/txvEmail"
+        app:layout_constraintTop_toBottomOf="@+id/txvEmail" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edtPassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_edittext"
+        android:inputType="textPassword"
+        app:passwordToggleTint="@color/black"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txvPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvPassword"
+        android:paddingStart="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="10dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/txvConfirmation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/confirmation"
+        app:layout_constraintEnd_toEndOf="@+id/txvPassword"
+        app:layout_constraintTop_toBottomOf="@+id/txvPassword" />
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/edtConfirmation"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_edittext"
+        android:inputType="textPassword"
+        app:passwordToggleTint="@color/black"
+        app:passwordToggleEnabled="true"
+        app:layout_constraintBaseline_toBaselineOf="@+id/txvConfirmation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/txvConfirmation"
+        android:paddingStart="10dp"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="10dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btnCreate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:onClick="btnCreateClick"
+        android:text="@string/createAccount"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

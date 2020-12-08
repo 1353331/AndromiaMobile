@@ -10,4 +10,13 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="title">Andromia</string>
+    <string name="username">Nom d\'utilisateur</string>
+    <string name="password">Mot de passe</string>
+    <string name="connection">Connexion</string>
+    <string name="creation">Inscription</string>
+    <string name="titleCreation">Inscription</string>
+    <string name="email">Email</string>
+    <string name="confirmation">Confirmation</string>
+    <string name="createAccount">S\'inscrire</string>
 </resources>
