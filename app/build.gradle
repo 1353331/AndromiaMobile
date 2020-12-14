@@ -1,6 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-android-extensions'
+    id 'org.jetbrains.kotlin.plugin.serialization' version '1.4.10'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -58,4 +61,5 @@ dependencies {
     implementation 'com.github.kittinunf.fuel:fuel-android:2.3.0'
     implementation 'com.github.kittinunf.fuel:fuel-json:2.3.0'
     implementation 'org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1'
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
 }

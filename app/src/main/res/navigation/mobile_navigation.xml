@@ -22,4 +22,23 @@
         android:name="ca.qc.cstj.andromiamobile.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/nav_monsters"
+        android:name="ca.qc.cstj.andromiamobile.ui.monsters.MonstersFragment"
+        android:label="Monsters"
+        tools:layout="@layout/fragment_monsters">
+        <action
+            android:id="@+id/action_nav_monsters_to_detailMonsterFragment"
+            app:destination="@id/detailMonsterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailMonsterFragment"
+        android:name="ca.qc.cstj.andromiamobile.ui.monsters.DetailMonsterFragment"
+        android:label="DetailMonsterFragment"
+        tools:layout="@layout/fragment_monster_details">
+        <argument
+            android:name="monster"
+            app:argType="ca.qc.cstj.andromiamobile.models.Monster"
+            />
+    </fragment>
 </navigation>

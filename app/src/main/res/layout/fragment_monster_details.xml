@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_activity">
+
+    <ImageView
+        android:id="@+id/imgIconMonsterDetails"
+        android:layout_width="125dp"
+        android:layout_height="130dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/txvMonsterNameDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Le nom du monstre"
+        android:textColor="@color/text_color"
+        app:layout_constraintEnd_toStartOf="@+id/txvAtlasDetails"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/imgIconMonsterDetails"
+        app:layout_constraintTop_toTopOf="@+id/imgIconMonsterDetails" />
+
+    <TextView
+        android:id="@+id/txvAtlasDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/text_color"
+        android:text="Atlas"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txvMonsterNameDetails" />
+
+    <TextView
+        android:id="@+id/lblHealthDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Vie:"
+        android:textColor="@color/text_color"
+        app:layout_constraintStart_toStartOf="@+id/txvMonsterNameDetails"
+        app:layout_constraintTop_toTopOf="@+id/txvMonsterHealthDetails" />
+
+    <TextView
+        android:id="@+id/txvMonsterHealthDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:text="Pts de vie"
+        android:textColor="@color/text_color"
+        app:layout_constraintEnd_toEndOf="@+id/txvMonsterNameDetails"
+        app:layout_constraintStart_toEndOf="@+id/lblCriticalDetails"
+        app:layout_constraintTop_toBottomOf="@+id/txvMonsterNameDetails" />
+
+    <TextView
+        android:id="@+id/lblAtkDetails"
+        android:layout_width="wrap_content"
+        android:textColor="@color/text_color"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Atk:"
+        app:layout_constraintStart_toStartOf="@+id/lblHealthDetails"
+        app:layout_constraintTop_toBottomOf="@+id/lblHealthDetails" />
+
+    <TextView
+        android:id="@+id/txvMonsterAtkDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/text_color"
+        android:text="Atk monstre"
+        app:layout_constraintEnd_toEndOf="@+id/txvMonsterHealthDetails"
+        app:layout_constraintStart_toStartOf="@+id/txvMonsterHealthDetails"
+        app:layout_constraintTop_toBottomOf="@+id/txvMonsterHealthDetails" />
+
+    <TextView
+        android:id="@+id/lblSpeedDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color"
+        android:layout_marginTop="8dp"
+        android:text="Vitesse:"
+        app:layout_constraintStart_toStartOf="@+id/lblAtkDetails"
+        app:layout_constraintTop_toBottomOf="@+id/lblAtkDetails" />
+
+    <TextView
+        android:id="@+id/txvMonsterSpeedDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/text_color"
+        android:text="Speed"
+        app:layout_constraintEnd_toEndOf="@+id/txvMonsterAtkDetails"
+        app:layout_constraintStart_toEndOf="@+id/lblCriticalDetails"
+        app:layout_constraintTop_toBottomOf="@+id/txvMonsterAtkDetails" />
+
+    <TextView
+        android:id="@+id/lblCriticalDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_color"
+        android:layout_marginTop="8dp"
+        android:text="Critique:"
+        app:layout_constraintStart_toStartOf="@+id/lblSpeedDetails"
+        app:layout_constraintTop_toBottomOf="@+id/lblSpeedDetails" />
+
+    <TextView
+        android:id="@+id/txvMonsterCriticalDetails"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/text_color"
+        android:text="Critique"
+        app:layout_constraintEnd_toEndOf="@+id/txvMonsterSpeedDetails"
+        app:layout_constraintStart_toEndOf="@+id/lblCriticalDetails"
+        app:layout_constraintTop_toBottomOf="@+id/txvMonsterSpeedDetails" />
+
+    <TableLayout
+        android:id="@+id/tblKernel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/txvMonsterCriticalDetails"
+        app:layout_constraintStart_toStartOf="@+id/imgIconMonsterDetails"
+        app:layout_constraintTop_toBottomOf="@+id/lblCriticalDetails" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
