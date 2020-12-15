@@ -20,5 +20,9 @@
             android:id="@+id/nav_monsters"
             android:icon="@drawable/ic_menu_gallery"
             android:title="Monstres" />
+        <item
+            android:id="@+id/nav_explorations"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Explorations" />
     </group>
 </menu>
