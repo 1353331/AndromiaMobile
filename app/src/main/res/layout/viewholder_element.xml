@@ -13,17 +13,15 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        >
+        android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/txvDestination"
+            android:id="@+id/txvElementStr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Destination: "
+            android:text="Nom: "
             android:textColor="@color/black"
             android:textSize="19sp"
             android:textStyle="bold"
@@ -31,41 +29,41 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/txvDestinationName"
+            android:id="@+id/txvElementName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Le nom de la destination"
+            android:text="Le nom de l'element"
             android:textColor="@color/black"
             android:textSize="19sp"
 
-            app:layout_constraintStart_toEndOf="@+id/txvDestination"
-            app:layout_constraintTop_toTopOf="@+id/txvDestination" />
+            app:layout_constraintStart_toEndOf="@+id/txvElementStr"
+            app:layout_constraintTop_toTopOf="@+id/txvElementStr" />
 
         <TextView
-            android:id="@+id/txvDate"
+            android:id="@+id/txvQuantite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
-            android:text="Date d'exploration: "
+            android:text="Quantité: "
             android:textColor="@color/black"
             android:textSize="19sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/txvDestination"
-            app:layout_constraintTop_toBottomOf="@+id/txvDestination" />
+            app:layout_constraintStart_toStartOf="@+id/txvElementStr"
+            app:layout_constraintTop_toBottomOf="@+id/txvElementStr" />
 
         <TextView
-            android:id="@+id/txvExplorationDate"
+            android:id="@+id/txvQuantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:text="Date de l'exploration"
+            android:text="Quantité de l'élément"
             android:textColor="@color/black"
             android:textSize="19sp"
-            app:layout_constraintStart_toEndOf="@+id/txvDate"
-            app:layout_constraintTop_toTopOf="@+id/txvDate" />
+            app:layout_constraintStart_toEndOf="@+id/txvQuantite"
+            app:layout_constraintTop_toTopOf="@+id/txvQuantite" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

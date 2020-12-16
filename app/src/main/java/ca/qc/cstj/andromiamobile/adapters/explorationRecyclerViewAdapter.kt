@@ -3,16 +3,13 @@ package ca.qc.cstj.andromiamobile.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.TextView
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import ca.qc.cstj.andromiamobile.R
 import ca.qc.cstj.andromiamobile.databinding.ViewholderExplorationBinding
 import ca.qc.cstj.andromiamobile.models.Exploration
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ExplorationRecyclerViewAdapter(var explorations: List<Exploration> = listOf()) : RecyclerView.Adapter<ExplorationRecyclerViewAdapter.ViewHolder>() {
 
@@ -40,7 +37,12 @@ class ExplorationRecyclerViewAdapter(var explorations: List<Exploration> = listO
 
         fun bind(exploration: Exploration) {
             txvDestinationName.text = exploration.destination
-            txvExplorationDate.text = exploration.explorationDate
+
+            val date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.CANADA_FRENCH).parse(exploration.explorationDate)!!
+            val formatter = SimpleDateFormat("yyyy-MM-dd", Locale.CANADA_FRENCH)
+            val dateString = formatter.format(date)
+
+            txvExplorationDate.text = dateString
         }
 
     }
