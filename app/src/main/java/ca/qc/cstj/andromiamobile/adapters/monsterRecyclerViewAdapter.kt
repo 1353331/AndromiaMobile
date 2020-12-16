@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import ca.qc.cstj.andromiamobile.R
 import ca.qc.cstj.andromiamobile.databinding.ViewholderMonsterBinding
+import ca.qc.cstj.andromiamobile.helpers.DrawablesHelper
 import ca.qc.cstj.andromiamobile.models.Monster
 import ca.qc.cstj.andromiamobile.ui.monsters.MonstersFragmentDirections
 import com.bumptech.glide.Glide
@@ -46,19 +47,22 @@ class MonsterRecyclerViewAdapter(var monsters: List<Monster> = listOf()) : Recyc
         //TODO: Gestion de l'interface graphique d'une carte pour une planète
         //Afficher son nom et sa température
         private val txvMonsterName: TextView = binding.txvMonsterName
-        private val txvAffinity: TextView = binding.txvAffinity
         private val imgIconMonster: ImageView = binding.imgIconMonster
+        private val imgAffinityList: ImageView = binding.imgAffinityList
 
         fun bind(monster: Monster) {
             txvMonsterName.text = monster.name
-            txvAffinity.text = monster.affinity
 
             val requestOptions = RequestOptions().placeholder(circularProgressDrawable).error(R.drawable.logo)
 
             Glide.with(binding.root.context) //Autre bibliothèque Picasso
                 .applyDefaultRequestOptions(requestOptions)
-                .load(monster.asset)
+                .load(monster.assets)
                 .into(imgIconMonster)
+
+            Glide.with(binding.root.context)
+                .load(DrawablesHelper.getDrawable(binding.root.context, monster.affinity))
+                .into(imgAffinityList)
 
             binding.root.setOnClickListener {
                 val direction = MonstersFragmentDirections.actionNavMonstersToDetailMonsterFragment(monster)
