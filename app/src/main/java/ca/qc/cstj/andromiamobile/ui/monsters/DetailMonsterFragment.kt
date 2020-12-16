@@ -45,9 +45,6 @@ class DetailMonsterFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //Toast.makeText(this.context, args.planet!!.name, Toast.LENGTH_LONG).show()
-        //(activity as MainActivity).supportActionBar?.title = args.monster!!.name
-
         binding.txvAtlasDetails.text = "# ${args.monster.atlasNumber}"
         binding.txvMonsterNameDetails.text = args.monster.name
         binding.txvMonsterHealthDetails.text = args.monster.health.toString()
@@ -55,8 +52,9 @@ class DetailMonsterFragment: Fragment() {
         binding.txvMonsterSpeedDetails.text = args.monster.speed.toString()
         binding.txvMonsterCriticalDetails.text = "${(args.monster.critical*100).format(2)}%"
 
+        //Affichage des différentes images
         Glide.with(binding.root.context) //Autre bibliothèque Picasso
-                .load((args.monster as Monster).assets)
+                .load(args.monster.assets)
                 .into(binding.imgIconMonsterDetails)
 
         Glide.with(binding.root.context)
@@ -91,19 +89,23 @@ class DetailMonsterFragment: Fragment() {
             .load(DrawablesHelper.getDrawable(binding.root.context, args.monster.kernel[4]))
             .into(binding.imgKernel5Details)
 
+        // Affichage des couleurs du Hash
         var txvHash: TextView = TextView(binding.root.context)
         txvHash.text = args.monster.hash.slice(0..1)
         txvHash.setTextColor(ContextCompat.getColor(binding.root.context, R.color.text_color))
         binding.HashLayout.addView(txvHash)
+
         for (index in 0..9){
             val color = args.monster.hash.slice((index*6+2)..(index*6+7))
-            Log.d("colorHash", color)
+
             txvHash = TextView(binding.root.context)
             txvHash.width = 35
             txvHash.height = 50
             txvHash.setBackgroundColor(Color.parseColor("#${color}"))
+
             binding.HashLayout.addView(txvHash)
         }
+
         txvHash = TextView(binding.root.context)
         txvHash.text = args.monster.hash.slice(62..63)
         txvHash.setTextColor(ContextCompat.getColor(binding.root.context, R.color.text_color))
@@ -116,6 +118,6 @@ class DetailMonsterFragment: Fragment() {
                 DetailMonsterFragment().apply {}
     }
 
+    //Fonction qui sert à formatter les Double pour avoir 2 chiffres après la virgule
     fun Double.format(digits: Int) = "%.${digits}f".format(this)
-
 }

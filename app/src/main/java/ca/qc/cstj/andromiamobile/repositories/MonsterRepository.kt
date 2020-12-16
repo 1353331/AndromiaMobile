@@ -20,7 +20,6 @@ object MonsterRepository {
 
             when (result) {
                 is Result.Success -> {
-                    Log.d("testRepo", result.value.content)
                     RepositoryResult.Success(Json { ignoreUnknownKeys = true }.decodeFromString(result.value.content))
                 }
                 is Result.Failure -> {
