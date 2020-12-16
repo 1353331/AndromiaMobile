@@ -190,49 +190,14 @@
         app:layout_constraintStart_toStartOf="@+id/imgIconMonsterDetails"
         app:layout_constraintTop_toBottomOf="@+id/imgTalent1Details" />
 
-    <ImageView
-        android:id="@+id/imgKernel1Details"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvKernelDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/imgKernel2Details"
+        app:layout_constraintEnd_toEndOf="@+id/txvMonsterHealthDetails"
         app:layout_constraintStart_toStartOf="@+id/imgIconMonsterDetails"
-        app:layout_constraintTop_toBottomOf="@+id/lblKernelDetails" />
-
-    <ImageView
-        android:id="@+id/imgKernel2Details"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/imgKernel3Details"
-        app:layout_constraintStart_toEndOf="@+id/imgKernel1Details"
-        app:layout_constraintTop_toBottomOf="@+id/lblKernelDetails" />
-
-    <ImageView
-        android:id="@+id/imgKernel3Details"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/imgKernel4Details"
-        app:layout_constraintStart_toEndOf="@+id/imgKernel2Details"
-        app:layout_constraintTop_toBottomOf="@+id/lblKernelDetails" />
-
-    <ImageView
-        android:id="@+id/imgKernel4Details"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/imgKernel5Details"
-        app:layout_constraintStart_toEndOf="@+id/imgKernel3Details"
-        app:layout_constraintTop_toBottomOf="@+id/lblKernelDetails" />
-
-    <ImageView
-        android:id="@+id/imgKernel5Details"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/txvMonsterAtkDetails"
-        app:layout_constraintStart_toEndOf="@+id/imgKernel4Details"
         app:layout_constraintTop_toBottomOf="@+id/lblKernelDetails" />
 
     <TextView
@@ -240,12 +205,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Hash"
 
+        android:text="Hash"
         android:textColor="@color/text_color"
         app:layout_constraintEnd_toEndOf="@+id/txvMonsterHealthDetails"
         app:layout_constraintStart_toStartOf="@+id/imgIconMonsterDetails"
-        app:layout_constraintTop_toBottomOf="@+id/imgKernel3Details" />
+        app:layout_constraintTop_toBottomOf="@+id/rcvKernelDetails" />
 
     <LinearLayout
         android:id="@+id/HashLayout"

@@ -14,6 +14,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.LinearLayoutManager
 import ca.qc.cstj.andromiamobile.MainActivity
 import ca.qc.cstj.andromiamobile.R
 import ca.qc.cstj.andromiamobile.databinding.FragmentMonsterDetailsBinding
@@ -21,13 +22,16 @@ import ca.qc.cstj.andromiamobile.models.Monster
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
+import ca.qc.cstj.andromiamobile.adapters.KernelRecyclerViewAdapter
 import ca.qc.cstj.andromiamobile.helpers.DrawablesHelper
+import ca.qc.cstj.andromiamobile.helpers.TopSpacingItemDecoration
 import org.w3c.dom.Text
 
 class DetailMonsterFragment: Fragment() {
     private var _binding : FragmentMonsterDetailsBinding? = null
     private val binding get() = _binding!!
     private val args: DetailMonsterFragmentArgs by navArgs()
+    private lateinit var kernelRecyclerViewAdapter: KernelRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,25 +73,13 @@ class DetailMonsterFragment: Fragment() {
             .load(DrawablesHelper.getDrawable(binding.root.context, args.monster.talents[1]))
             .into(binding.imgTalent2Details)
 
-        Glide.with(binding.root.context)
-            .load(DrawablesHelper.getDrawable(binding.root.context, args.monster.kernel[0]))
-            .into(binding.imgKernel1Details)
-
-        Glide.with(binding.root.context)
-            .load(DrawablesHelper.getDrawable(binding.root.context, args.monster.kernel[1]))
-            .into(binding.imgKernel2Details)
-
-        Glide.with(binding.root.context)
-            .load(DrawablesHelper.getDrawable(binding.root.context, args.monster.kernel[2]))
-            .into(binding.imgKernel3Details)
-
-        Glide.with(binding.root.context)
-            .load(DrawablesHelper.getDrawable(binding.root.context, args.monster.kernel[3]))
-            .into(binding.imgKernel4Details)
-
-        Glide.with(binding.root.context)
-            .load(DrawablesHelper.getDrawable(binding.root.context, args.monster.kernel[4]))
-            .into(binding.imgKernel5Details)
+        kernelRecyclerViewAdapter = KernelRecyclerViewAdapter()
+        binding.rcvKernelDetails.apply{
+            layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
+            adapter = kernelRecyclerViewAdapter
+            kernelRecyclerViewAdapter.kernel = args.monster.kernel
+            binding.rcvKernelDetails.adapter!!.notifyDataSetChanged()
+        }
 
         // Affichage des couleurs du Hash
         var txvHash: TextView = TextView(binding.root.context)

@@ -52,12 +52,10 @@ class DetailPortalActivity : AppCompatActivity() {
             binding.imgMonsterPortal.visibility = VISIBLE
 
             binding.lblKernelPortal.visibility = VISIBLE
-            val topSpacingItemDecoration = TopSpacingItemDecoration(30)
             kernelRecyclerViewAdapter = KernelRecyclerViewAdapter()
             binding.rcvKernelPortal.apply{
                 layoutManager = LinearLayoutManager(binding.root.context, LinearLayoutManager.HORIZONTAL, false)
                 adapter = kernelRecyclerViewAdapter
-                addItemDecoration(topSpacingItemDecoration)
                 kernelRecyclerViewAdapter.kernel = portal.monster.kernel
                 binding.rcvKernelPortal.adapter!!.notifyDataSetChanged()
             }

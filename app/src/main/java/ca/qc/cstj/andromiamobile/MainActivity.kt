@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
-        fab.setOnClickListener { view ->
+        fab.setOnClickListener { _ ->
             val scanner = IntentIntegrator(this)
             scanner.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
             scanner.setBeepEnabled(false)
@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_monsters), drawerLayout)
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_monsters, R.id.nav_explorations), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
@@ -77,13 +77,12 @@ class MainActivity : AppCompatActivity() {
                 if (scan.contents == null){
                     Toast.makeText(this, "Scan cancelled", Toast.LENGTH_LONG).show()
                 } else {
-                    Fuel.get("${Services.EXPLORATION_PORTAL_SERVICE}/${scan.contents}").responseJson() { request, response, result ->
+                    Fuel.get("${Services.EXPLORATION_PORTAL_SERVICE}/${scan.contents}").responseJson() { _, _, result ->
                         when(result){
                             is Result.Success -> {
                                 val portal: Exploration = Json {ignoreUnknownKeys = true}.decodeFromString(result.value.content)
-                                Log.d("testPortal", Json.encodeToString(portal))
-                                //val intent = DetailPortalActivity.newIntent(this, portal)
-                                //startActivity(intent)
+                                val intent = DetailPortalActivity.newIntent(this, portal)
+                                startActivity(intent)
                             }
                             is Result.Failure -> {
                                 Toast.makeText(this, "This portal doesn't exist.", Toast.LENGTH_LONG).show()
