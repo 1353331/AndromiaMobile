@@ -34,7 +34,7 @@
     <fragment
         android:id="@+id/detailMonsterFragment"
         android:name="ca.qc.cstj.andromiamobile.ui.monsters.DetailMonsterFragment"
-        android:label="DetailMonsterFragment"
+        android:label="Monster"
         tools:layout="@layout/fragment_monster_details">
         <argument
             android:name="monster"

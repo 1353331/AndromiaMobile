@@ -1,7 +1,11 @@
 package ca.qc.cstj.andromiamobile
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.navigation.NavigationView
@@ -13,6 +17,18 @@ import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import ca.qc.cstj.andromiamobile.helpers.RepositoryResult
+import ca.qc.cstj.andromiamobile.helpers.Services
+import ca.qc.cstj.andromiamobile.models.Exploration
+import ca.qc.cstj.andromiamobile.ui.portals.DetailPortalActivity
+import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.httpGet
+import com.github.kittinunf.fuel.json.responseJson
+import com.github.kittinunf.result.Result
+import com.google.zxing.integration.android.IntentIntegrator
+import kotlinx.serialization.decodeFromString
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 
 class MainActivity : AppCompatActivity() {
 
@@ -26,8 +42,10 @@ class MainActivity : AppCompatActivity() {
 
         val fab: FloatingActionButton = findViewById(R.id.fab)
         fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                    .setAction("Action", null).show()
+            val scanner = IntentIntegrator(this)
+            scanner.setDesiredBarcodeFormats(IntentIntegrator.QR_CODE)
+            scanner.setBeepEnabled(false)
+            scanner.initiateScan()
         }
         val drawerLayout: DrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -49,5 +67,33 @@ class MainActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    // Après le scan
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        if (resultCode == Activity.RESULT_OK){
+            val scan = IntentIntegrator.parseActivityResult(requestCode, resultCode, data)
+            if (scan != null) {
+                if (scan.contents == null){
+                    Toast.makeText(this, "Scan cancelled", Toast.LENGTH_LONG).show()
+                } else {
+                    Fuel.get("${Services.EXPLORATION_PORTAL_SERVICE}/${scan.contents}").responseJson() { request, response, result ->
+                        when(result){
+                            is Result.Success -> {
+                                val portal: Exploration = Json {ignoreUnknownKeys = true}.decodeFromString(result.value.content)
+                                Log.d("testPortal", Json.encodeToString(portal))
+                                //val intent = DetailPortalActivity.newIntent(this, portal)
+                                //startActivity(intent)
+                            }
+                            is Result.Failure -> {
+                                Toast.makeText(this, "This portal doesn't exist.", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                    }
+                }
+            } else {
+                super.onActivityResult(requestCode, resultCode, data)
+            }
+        }
     }
 }
