@@ -43,15 +43,10 @@ class MonstersFragment : Fragment() {
 
         val topSpacingItemDecoration = TopSpacingItemDecoration(30)
 
-        //Appel à notre repository pour récupérer les planètes
-
-        //val username = PlanetsFragmentArgs.fromBundle(requireActivity().intent.extras!!).username
-
         //TODO: Afficher les planètes dans le Recycler View
         monsterRecyclerViewAdapter = MonsterRecyclerViewAdapter()
 
         binding.rcvMonsters.apply {
-            //layoutManager = GridLayoutManager(this.context,2)
             layoutManager = LinearLayoutManager(this.context)
             adapter = monsterRecyclerViewAdapter
             addItemDecoration(topSpacingItemDecoration)
@@ -69,20 +64,6 @@ class MonstersFragment : Fragment() {
                 }
             }
         }
-
-    }
-
-    private fun createPlanet() : List<Monster> {
-        val monsters = mutableListOf<Monster>()
-
-        val numberToGenerate = Random.nextInt(0,21)
-
-        for(i in 0..numberToGenerate) {
-            //val newPlanet = Monster("Monstre $i", Random.nextInt(1,50), Random.nextInt(1,25).toString(),"")
-            //planets.add(newPlanet)
-        }
-
-        return monsters
 
     }
 

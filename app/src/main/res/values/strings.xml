@@ -21,4 +21,19 @@
     <string name="createAccount">S\'inscrire</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="portal_key">Portal Key</string>
+    <string name="explore">Explore</string>
+    <string name="health">Health:</string>
+    <string name="damage">Damage:</string>
+    <string name="speed">Speed:</string>
+    <string name="critical">Critical:</string>
+    <string name="affinity">Affinity</string>
+    <string name="talents">Talents</string>
+    <string name="kernel">Kernel</string>
+    <string name="hash">Hash</string>
+    <string name="quit_exploration">Quit exploration</string>
+    <string name="no_monster_found">No monster found</string>
+    <string name="no_vault_found">No vault found</string>
+    <string name="activate_kernel">Activate kernel</string>
+    <string name="scan_cancelled">Scan cancelled</string>
 </resources>

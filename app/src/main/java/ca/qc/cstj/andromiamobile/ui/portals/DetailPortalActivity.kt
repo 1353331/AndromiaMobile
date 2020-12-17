@@ -12,6 +12,7 @@ import ca.qc.cstj.andromiamobile.MainActivity
 import ca.qc.cstj.andromiamobile.adapters.ElementRecyclerViewAdapter
 import ca.qc.cstj.andromiamobile.adapters.KernelRecyclerViewAdapter
 import ca.qc.cstj.andromiamobile.databinding.ActivityDetailPortalBinding
+import ca.qc.cstj.andromiamobile.helpers.AlertDialogBuilder
 import ca.qc.cstj.andromiamobile.helpers.Services
 import ca.qc.cstj.andromiamobile.helpers.TopSpacingItemDecoration
 import ca.qc.cstj.andromiamobile.models.Exploration
@@ -32,6 +33,7 @@ class DetailPortalActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        title = "Portal"
         binding = ActivityDetailPortalBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val portal: Exploration = intent.getSerializableExtra(INTENT_PORTAL) as Exploration
@@ -66,7 +68,7 @@ class DetailPortalActivity : AppCompatActivity() {
                         .jsonBody(Json.encodeToString(portal.monster)).response{result ->
                             when(result){
                                 is Result.Success -> {
-                                    Toast.makeText(binding.root.context, "You captured the monster!", Toast.LENGTH_LONG).show()
+                                    AlertDialogBuilder.showAlertDialog("Success", "You captured the monster!", this)
                                     binding.txvMonsterNamePortal.visibility = GONE
                                     binding.imgMonsterPortal.visibility = GONE
                                     binding.btnCapturePortal.visibility = GONE
@@ -74,7 +76,7 @@ class DetailPortalActivity : AppCompatActivity() {
                                     binding.rcvKernelPortal.visibility = GONE
                                 }
                                 is Result.Failure -> {
-                                    Toast.makeText(binding.root.context, "You don't have enough elements to capture this monster!", Toast.LENGTH_LONG).show()
+                                    AlertDialogBuilder.showAlertDialog("Failure", "You don't have enough elements to capture this monster", this)
                                 }
                             }
                         }

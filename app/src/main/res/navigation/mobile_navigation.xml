@@ -3,25 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/nav_home">
-
-    <fragment
-        android:id="@+id/nav_home"
-        android:name="ca.qc.cstj.andromiamobile.ui.home.HomeFragment"
-        android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
-
-    <fragment
-        android:id="@+id/nav_gallery"
-        android:name="ca.qc.cstj.andromiamobile.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
-
-    <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="ca.qc.cstj.andromiamobile.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+    app:startDestination="@+id/nav_monsters">
     <fragment
         android:id="@+id/nav_monsters"
         android:name="ca.qc.cstj.andromiamobile.ui.monsters.MonstersFragment"
@@ -29,7 +11,9 @@
         tools:layout="@layout/fragment_monsters">
         <action
             android:id="@+id/action_nav_monsters_to_detailMonsterFragment"
-            app:destination="@id/detailMonsterFragment" />
+            app:destination="@id/detailMonsterFragment"
+            app:enterAnim="@anim/fragment_fade_enter"
+            app:exitAnim="@anim/fragment_fade_exit" />
     </fragment>
     <fragment
         android:id="@+id/detailMonsterFragment"
@@ -53,4 +37,9 @@
         android:label="Elements"
         tools:layout="@layout/fragment_elements">
     </fragment>
+    <fragment
+        android:id="@+id/nav_portal_manual"
+        android:name="ca.qc.cstj.andromiamobile.ui.portals.PortalManualFragment"
+        android:label="Manual Exploration"
+        tools:layout="@layout/fragment_portal_manual"/>
 </navigation>

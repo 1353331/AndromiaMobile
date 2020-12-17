@@ -22,7 +22,8 @@
             android:theme="@style/Theme.AndromiaMobile.ActionBar"/>
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AndromiaMobile.NoActionBar">
+            android:theme="@style/Theme.AndromiaMobile.NoActionBar"
+            android:launchMode="singleInstance">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
