@@ -1,5 +1,6 @@
 package ca.qc.cstj.andromiamobile.ui.monsters
 
+import android.annotation.SuppressLint
 import android.app.ActionBar
 import android.graphics.Color
 import android.os.Bundle
