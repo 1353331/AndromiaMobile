@@ -1,6 +1,7 @@
 package ca.qc.cstj.andromiamobile
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
@@ -134,5 +135,12 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val INTERVAL: Long = 1000*60
+        private const val INTENT_USERNAME = "username"
+
+        fun newIntent(context: Context, username: String): Intent {
+            val intent = Intent(context, MainActivity::class.java)
+            intent.putExtra(INTENT_USERNAME, username)
+            return intent
+        }
     }
 }

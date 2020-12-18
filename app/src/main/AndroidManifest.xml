@@ -20,8 +20,15 @@
 
         <activity android:name=".ui.portals.DetailPortalActivity"
             android:theme="@style/Theme.AndromiaMobile.ActionBar"/>
+
         <activity
             android:name=".MainActivity"
+            android:theme="@style/Theme.AndromiaMobile.NoActionBar"
+            android:launchMode="singleInstance">
+        </activity>
+
+        <activity
+            android:name=".ui.account.LoginActivity"
             android:theme="@style/Theme.AndromiaMobile.NoActionBar"
             android:launchMode="singleInstance">
             <intent-filter>
@@ -30,6 +37,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".ui.account.CreationActivity"
+            android:theme="@style/Theme.AndromiaMobile.NoActionBar"
+            android:launchMode="standard">
+        </activity>
+
     </application>
 
 </manifest>

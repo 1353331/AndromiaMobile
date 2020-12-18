@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/cardview_dark_background"
+    android:background="@drawable/background_activity"
     android:layout_height="match_parent">
 
     <TextView
@@ -12,7 +12,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/title"
-        android:textSize="42sp"
+        android:textSize="56sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,6 +25,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:text="@string/username"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txvTitle" />
 
@@ -31,18 +33,19 @@
         android:id="@+id/edtUsername"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:background="@drawable/rounded_edittext"
+        android:inputType="textEmailAddress"
         android:paddingStart="10dp"
-        android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:paddingEnd="10dp"
+        android:paddingBottom="5dp"
         android:textStyle="bold"
-        android:inputType="textEmailAddress"
-        android:background="@drawable/rounded_edittext"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txvUsername"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txvUsername" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txvUsername"
+        app:layout_constraintTop_toBottomOf="@+id/txvUsername" />
 
     <TextView
         android:id="@+id/txvPassword"
@@ -50,27 +53,29 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="@string/password"
-        app:layout_constraintEnd_toEndOf="@+id/txvUsername"
-        app:layout_constraintTop_toBottomOf="@+id/txvUsername" />
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="@+id/edtUsername"
+        app:layout_constraintTop_toBottomOf="@+id/edtUsername" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/edtPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/rounded_edittext"
         android:inputType="textPassword"
-        app:passwordToggleTint="@color/black"
-        app:passwordToggleEnabled="true"
-        app:layout_constraintBaseline_toBaselineOf="@+id/txvPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txvPassword"
         android:paddingStart="10dp"
-        android:paddingBottom="5dp"
         android:paddingTop="5dp"
         android:paddingEnd="10dp"
-        android:textStyle="bold" />
+        android:paddingBottom="5dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/txvPassword"
+        app:layout_constraintTop_toBottomOf="@+id/txvPassword"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleTint="@color/black" />
 
     <Button
         android:id="@+id/btnConnection"
