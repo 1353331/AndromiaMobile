@@ -15,9 +15,10 @@ import kotlinx.serialization.json.Json
 object ExplorationRepository {
     suspend fun getExplorations(): RepositoryResult<List<Exploration>> {
         return withContext(Dispatchers.IO) {
-            //Fonctionne dans un autre thread
+            //EL :On va chercher les explorations
             val (_, _, result) = Services.EXPLORATION_SERVICE.httpGet().responseJson()
 
+            //EL :On teste voir si on a réussi à aller les récupérer ou non
             when (result) {
                 is Result.Success -> {
                     RepositoryResult.Success(Json { ignoreUnknownKeys = true }.decodeFromString(result.value.content))

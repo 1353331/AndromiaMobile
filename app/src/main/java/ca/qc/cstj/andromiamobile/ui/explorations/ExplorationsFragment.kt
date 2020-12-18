@@ -18,6 +18,7 @@ import kotlinx.coroutines.launch
 
 class ExplorationsFragment : Fragment() {
 
+    //EL :on crée le bind pour notre fragment
     private var _binding : FragmentExplorationsBinding? =  null
     private val binding get() = _binding!!
 
@@ -32,6 +33,7 @@ class ExplorationsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        //EL :On bind à notre fragment des explorations
         _binding = FragmentExplorationsBinding.inflate(layoutInflater)
         return binding.root
     }
@@ -41,26 +43,24 @@ class ExplorationsFragment : Fragment() {
 
         val topSpacingItemDecoration = TopSpacingItemDecoration(30)
 
-        //Appel à notre repository pour récupérer les planètes
-
-        //val username = PlanetsFragmentArgs.fromBundle(requireActivity().intent.extras!!).username
-
         explorationRecyclerViewAdapter = ExplorationRecyclerViewAdapter()
 
         binding.rcvExplorations.apply {
-            //layoutManager = GridLayoutManager(this.context,2)
             layoutManager = LinearLayoutManager(this.context)
             adapter = explorationRecyclerViewAdapter
             addItemDecoration(topSpacingItemDecoration)
         }
 
         lifecycleScope.launch {
+            //EL : on va récupérer les explorations
             when(val result = ExplorationRepository.getExplorations()) {
                 is RepositoryResult.Success -> {
+                    //EL :on a réussi à aller les récupérer, donc on les affiche dans le recycleview
                     explorationRecyclerViewAdapter.explorations = result.data
                     binding.rcvExplorations.adapter!!.notifyDataSetChanged()
                 }
                 is RepositoryResult.Error -> {
+                    //EL :on n'a pas réussi à aller les récupérer, donc on affiche le message d'erreur
                     Toast.makeText(this@ExplorationsFragment.context, result.exception.message, Toast.LENGTH_LONG).show()
                 }
             }
@@ -69,7 +69,6 @@ class ExplorationsFragment : Fragment() {
     }
 
     companion object {
-
         fun newInstance() =
             ExplorationsFragment().apply {
                 arguments = Bundle().apply {}

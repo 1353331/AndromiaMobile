@@ -14,7 +14,6 @@ class ElementRecyclerViewAdapter(var elements: List<Element> = listOf()) : Recyc
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ElementRecyclerViewAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.viewholder_element, parent, false)
-
         return ViewHolder(view)
     }
 
@@ -26,15 +25,16 @@ class ElementRecyclerViewAdapter(var elements: List<Element> = listOf()) : Recyc
     override fun getItemCount(): Int = elements.size
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        //BINDING Ajout ici
+        //EL :On bind le viewholder
         private val binding = ViewholderElementBinding.bind(view)
-        //TODO: Gestion de l'interface graphique d'une carte pour une planète
 
+        //EL :On déclare les txv présents
         private val txvElementName: TextView = binding.txvElementName
         private val txvQuantity: TextView = binding.txvQuantity
 
 
         fun bind(element: Element) {
+            //EL :On met le contenu à afficher dans les txv
             txvElementName.text = element.element
             txvQuantity.text = element.quantity.toString()
         }
