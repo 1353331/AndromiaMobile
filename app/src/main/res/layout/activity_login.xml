@@ -19,18 +19,18 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/txvUsername"
+        android:id="@+id/txvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
-        android:text="@string/username"
+        android:text="Adresse courriel"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txvTitle" />
 
     <EditText
-        android:id="@+id/edtUsername"
+        android:id="@+id/edtEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -41,11 +41,12 @@
         android:paddingTop="5dp"
         android:paddingEnd="10dp"
         android:paddingBottom="5dp"
+        android:textColor="@color/black"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/txvUsername"
-        app:layout_constraintTop_toBottomOf="@+id/txvUsername" />
+        app:layout_constraintStart_toStartOf="@+id/txvEmail"
+        app:layout_constraintTop_toBottomOf="@+id/txvEmail" />
 
     <TextView
         android:id="@+id/txvPassword"
@@ -54,8 +55,8 @@
         android:layout_marginTop="16dp"
         android:text="@string/password"
         android:textSize="25sp"
-        app:layout_constraintStart_toStartOf="@+id/edtUsername"
-        app:layout_constraintTop_toBottomOf="@+id/edtUsername" />
+        app:layout_constraintStart_toStartOf="@+id/edtEmail"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
 
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/edtPassword"
@@ -70,12 +71,25 @@
         android:paddingEnd="10dp"
         android:paddingBottom="5dp"
         android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/txvPassword"
         app:layout_constraintTop_toBottomOf="@+id/txvPassword"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/black" />
+
+    <Button
+        android:id="@+id/btnConnectionCheat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="212dp"
+        android:onClick="btnConnectionCheatClick"
+        android:text="Connection cheat"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnConnection"

@@ -9,6 +9,9 @@ import androidx.appcompat.app.AppCompatActivity
 import ca.qc.cstj.andromiamobile.MainActivity
 import ca.qc.cstj.andromiamobile.databinding.ActivityCreationBinding
 import ca.qc.cstj.andromiamobile.databinding.ActivityLoginBinding
+import ca.qc.cstj.andromiamobile.helpers.Services
+import com.github.kittinunf.fuel.core.extensions.jsonBody
+import com.github.kittinunf.fuel.httpPost
 
 class CreationActivity: AppCompatActivity() {
 
@@ -29,7 +32,12 @@ class CreationActivity: AppCompatActivity() {
 
         if(password.isNotBlank() && confirmation.isNotBlank() && username.isNotBlank() && email.isNotBlank() &&
             password.toString() == confirmation.toString()){
-            //TODO:Envoie en BD l'utilisateur
+            //Envoie en BD l'utilisateur
+            val service = Services.CREATION_SERVICE
+            val compte = "{\"email\":\"${email}\",\"username\":\"${username}\",\"password\":\"${password}\"}"
+
+            service.httpPost().jsonBody(compte).response{ _ ->  }
+
             Toast.makeText(this, "Utilisateur créé!", Toast.LENGTH_LONG).show()
 
             val intent = LoginActivity.newIntent(this)
