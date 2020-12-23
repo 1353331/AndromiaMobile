@@ -13,15 +13,17 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 object ElementRepository {
-    suspend fun getElements(): RepositoryResult<List<Element>> {
+    suspend fun getElements(accessToken:String): RepositoryResult<List<Element>> {
         return withContext(Dispatchers.IO) {
+            val token = "Bearer $accessToken".replace("\"", "")
             //EL :On va chercher les Elements
-            val (_, _, result) = Services.ELEMENT_SERVICE.httpGet().responseJson()
+            val (_, _, result) = Services.INVENTORY_SERVICE.httpGet().header("Authorization" to token).responseJson()
 
             //EL :On teste voir si on a réussi à aller les récupérer ou non
             when (result) {
                 is Result.Success -> {
-                    RepositoryResult.Success(Json { ignoreUnknownKeys = true }.decodeFromString(result.value.content))
+                    Log.d("testElement", result.value.obj().getJSONArray("element").toString())
+                    RepositoryResult.Success(Json { ignoreUnknownKeys = true }.decodeFromString(result.value.obj().getJSONArray("element").toString()))
                 }
                 is Result.Failure -> {
                     RepositoryResult.Error(result.getException())

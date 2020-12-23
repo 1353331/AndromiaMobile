@@ -47,7 +47,7 @@ class LoginActivity : AppCompatActivity() {
                     val accessToken = resulatBody.jsonObject["accessToken"].toString()
                     val refreshToken = resulatBody.jsonObject["refreshToken"].toString()
 
-                    val intent = MainActivity.newIntent(this, username.toString())
+                    val intent = MainActivity.newIntent(this, accessToken, refreshToken)
                     startActivity(intent)
 
                 }
@@ -76,7 +76,7 @@ class LoginActivity : AppCompatActivity() {
                     val accessToken = resulatBody.jsonObject["accessToken"].toString()
                     val refreshToken = resulatBody.jsonObject["refreshToken"].toString()
 
-                    val intent = MainActivity.newIntent(this, email.toString())
+                    val intent = MainActivity.newIntent(this, accessToken, refreshToken)
                     startActivity(intent)
 
                 }

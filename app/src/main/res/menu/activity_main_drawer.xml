@@ -10,7 +10,7 @@
             android:title="Monsters" />
         <item
             android:id="@+id/nav_explorations"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_treasure_map"
             android:title="Explorations" />
         <item
             android:id="@+id/nav_elements"

@@ -65,6 +65,7 @@ class DetailPortalActivity : AppCompatActivity() {
             btnCapturePortal.visibility = VISIBLE
             btnCapturePortal.setOnClickListener() {
                 Fuel.post(Services.CAPTURE_SERVICE)
+                        .header("Authorization" to "Bearer ${intent.getStringExtra(INTENT_ACCESS)}".replace("\"", ""))
                         .jsonBody(Json.encodeToString(portal.monster)).response{result ->
                             when(result){
                                 is Result.Success -> {
@@ -103,12 +104,15 @@ class DetailPortalActivity : AppCompatActivity() {
 
     companion object {
         private const val INTENT_PORTAL = "portal"
+        private const val INTENT_ACCESS = "accessToken"
+        private const val INTENT_REFRESH = "refreshToken"
 
-        fun newIntent(context: Context, portal: Exploration): Intent {
+        fun newIntent(context: Context, portal: Exploration, access: String, refresh: String): Intent {
             val intent = Intent(context, DetailPortalActivity::class.java)
             intent.putExtra(INTENT_PORTAL, portal)
+            intent.putExtra(INTENT_ACCESS, access)
+            intent.putExtra(INTENT_REFRESH, refresh)
             return intent
         }
-
     }
 }

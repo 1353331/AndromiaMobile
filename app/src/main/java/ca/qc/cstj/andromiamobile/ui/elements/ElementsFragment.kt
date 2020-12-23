@@ -52,7 +52,7 @@ class ElementsFragment : Fragment() {
 
         lifecycleScope.launch {
             //EL :on va récupérer les éléments
-            when(val result = ElementRepository.getElements()) {
+            when(val result = ElementRepository.getElements(ElementsFragmentArgs.fromBundle(requireActivity().intent.extras!!).accessToken)) {
                 is RepositoryResult.Success -> {
                     //EL :si on a réussi, on affiche les éléments dans le recyclerview
                     elementRecyclerViewAdapter.elements = result.data

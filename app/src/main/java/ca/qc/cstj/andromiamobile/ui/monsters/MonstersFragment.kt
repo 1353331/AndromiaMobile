@@ -54,7 +54,7 @@ class MonstersFragment : Fragment() {
 
         lifecycleScope.launch {
 
-            when(val result = MonsterRepository.getMonsters()) {
+            when(val result = MonsterRepository.getMonsters(MonstersFragmentArgs.fromBundle(requireActivity().intent.extras!!).accessToken)) {
                 is RepositoryResult.Success -> {
                     monsterRecyclerViewAdapter.monsters = result.data
                     binding.rcvMonsters.adapter!!.notifyDataSetChanged()

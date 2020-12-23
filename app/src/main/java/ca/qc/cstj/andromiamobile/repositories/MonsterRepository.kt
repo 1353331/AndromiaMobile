@@ -13,14 +13,15 @@ import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.json.Json
 
 object MonsterRepository {
-    suspend fun getMonsters(): RepositoryResult<List<Monster>> {
+    suspend fun getMonsters(accessToken:String): RepositoryResult<List<Monster>> {
         return withContext(Dispatchers.IO) {
             //Fonctionne dans un autre thread
-            val (_, _, result) = Services.MONSTER_SERVICE.httpGet().responseJson()
+            val token = "Bearer $accessToken".replace("\"", "")
+            val (_, _, result) = Services.INVENTORY_SERVICE.httpGet().header("Authorization" to token).responseJson()
 
             when (result) {
                 is Result.Success -> {
-                    RepositoryResult.Success(Json { ignoreUnknownKeys = true }.decodeFromString(result.value.content))
+                    RepositoryResult.Success(Json { ignoreUnknownKeys = true }.decodeFromString(result.value.obj().getJSONArray("monster").toString()))
                 }
                 is Result.Failure -> {
                     RepositoryResult.Error(result.getException())

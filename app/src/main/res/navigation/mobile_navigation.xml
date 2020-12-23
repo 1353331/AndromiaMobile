@@ -14,6 +14,9 @@
             app:destination="@id/detailMonsterFragment"
             app:enterAnim="@anim/fragment_fade_enter"
             app:exitAnim="@anim/fragment_fade_exit" />
+        <argument
+            android:name="accessToken"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/detailMonsterFragment"
@@ -30,16 +33,29 @@
         android:name="ca.qc.cstj.andromiamobile.ui.explorations.ExplorationsFragment"
         android:label="Explorations"
         tools:layout="@layout/fragment_explorations">
+        <argument
+            android:name="accessToken"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/nav_elements"
         android:name="ca.qc.cstj.andromiamobile.ui.elements.ElementsFragment"
         android:label="Elements"
         tools:layout="@layout/fragment_elements">
+        <argument
+            android:name="accessToken"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/nav_portal_manual"
         android:name="ca.qc.cstj.andromiamobile.ui.portals.PortalManualFragment"
         android:label="Manual Exploration"
-        tools:layout="@layout/fragment_portal_manual"/>
+        tools:layout="@layout/fragment_portal_manual">
+        <argument
+            android:name="accessToken"
+            app:argType="string" />
+        <argument
+            android:name="refreshToken"
+            app:argType="string" />
+    </fragment>
 </navigation>

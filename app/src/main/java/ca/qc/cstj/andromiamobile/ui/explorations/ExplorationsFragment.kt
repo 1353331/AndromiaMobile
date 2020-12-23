@@ -53,7 +53,7 @@ class ExplorationsFragment : Fragment() {
 
         lifecycleScope.launch {
             //EL : on va récupérer les explorations
-            when(val result = ExplorationRepository.getExplorations()) {
+            when(val result = ExplorationRepository.getExplorations(ExplorationsFragmentArgs.fromBundle(requireActivity().intent.extras!!).accessToken)) {
                 is RepositoryResult.Success -> {
                     //EL :on a réussi à aller les récupérer, donc on les affiche dans le recycleview
                     explorationRecyclerViewAdapter.explorations = result.data

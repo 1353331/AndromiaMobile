@@ -24,6 +24,7 @@ import ca.qc.cstj.andromiamobile.helpers.AlertDialogBuilder
 import ca.qc.cstj.andromiamobile.helpers.RepositoryResult
 import ca.qc.cstj.andromiamobile.helpers.Services
 import ca.qc.cstj.andromiamobile.models.Exploration
+import ca.qc.cstj.andromiamobile.models.Inventory
 import ca.qc.cstj.andromiamobile.ui.portals.DetailPortalActivity
 import com.github.kittinunf.fuel.Fuel
 import com.github.kittinunf.fuel.httpGet
@@ -65,24 +66,23 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        /*
+
         // Code pour actualiser l'Inox et la Location à toutes les X secondes
         val headerView: View = navView.getHeaderView(0)
         val txvExplorerInox: TextView = headerView.findViewById(R.id.txvExplorerInox)
         val txvExplorerLocation: TextView = headerView.findViewById(R.id.txvExplorerLocation)
-        val txvExplorerName: TextView = headerView.findViewById(R.id.txvExplorerName)
 
         val handler: Handler = Handler(Looper.getMainLooper())
 
         handler.post(object : Runnable {
             override fun run() {
-                Fuel.get(Services.EXPLORER_SERVICE).responseJson() { _, _, result ->
+                Log.d("testInox", intent.getStringExtra(INTENT_ACCESS)!!)
+                Fuel.get(Services.INVENTORY_SERVICE).header("Authorization" to "Bearer ${intent.getStringExtra(INTENT_ACCESS)}".replace("\"", "")).responseJson() { _, _, result ->
                     when (result) {
                         is Result.Success -> {
-                            val explorer: Explorer = Json { ignoreUnknownKeys = true }.decodeFromString(result.value.content)
-                            txvExplorerInox.text = "${explorer.inox.toString()} Inox"
-                            txvExplorerLocation.text = "Location Test"
-                            txvExplorerName.text = "Username Test"
+                            val inventory: Inventory = Json { ignoreUnknownKeys = true }.decodeFromString(result.value.obj().toString())
+                            txvExplorerInox.text = "${inventory.inox.toString()} Inox"
+                            txvExplorerLocation.text = "Location: ${inventory.location}"
                         }
                         is Result.Failure -> {
 
@@ -92,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                 handler.postDelayed(this, 5000)
             }
         })
-        */
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -114,11 +114,11 @@ class MainActivity : AppCompatActivity() {
                 if (scan.contents == null){
                     AlertDialogBuilder.showAlertDialog("Error", getString(R.string.scan_cancelled), this)
                 } else {
-                    Fuel.get("${Services.EXPLORATION_PORTAL_SERVICE}/${scan.contents}").responseJson() { _, _, result ->
+                    Fuel.get("${Services.EXPLORATION_PORTAL_SERVICE}/${scan.contents}").header("Authorization" to "Bearer ${intent.getStringExtra(INTENT_ACCESS)}".replace("\"", "")).responseJson() { _, _, result ->
                         when(result){
                             is Result.Success -> {
                                 val portal: Exploration = Json {ignoreUnknownKeys = true}.decodeFromString(result.value.content)
-                                val intent = DetailPortalActivity.newIntent(this, portal)
+                                val intent = DetailPortalActivity.newIntent(this, portal,intent.getStringExtra(INTENT_ACCESS)!!,intent.getStringExtra(INTENT_REFRESH)!!)
                                 startActivity(intent)
                             }
                             is Result.Failure -> {
@@ -135,11 +135,13 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val INTERVAL: Long = 1000*60
-        private const val INTENT_USERNAME = "username"
+        private const val INTENT_ACCESS = "accessToken"
+        private const val INTENT_REFRESH = "refreshToken"
 
-        fun newIntent(context: Context, username: String): Intent {
+        fun newIntent(context: Context, accessToken: String, refreshToken: String): Intent {
             val intent = Intent(context, MainActivity::class.java)
-            intent.putExtra(INTENT_USERNAME, username)
+            intent.putExtra(INTENT_ACCESS, accessToken)
+            intent.putExtra(INTENT_REFRESH, refreshToken)
             return intent
         }
     }

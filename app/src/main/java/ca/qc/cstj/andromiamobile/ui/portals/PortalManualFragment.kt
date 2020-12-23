@@ -8,6 +8,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import ca.qc.cstj.andromiamobile.MainActivity
 import ca.qc.cstj.andromiamobile.adapters.MonsterRecyclerViewAdapter
 import ca.qc.cstj.andromiamobile.databinding.FragmentMonstersBinding
 import ca.qc.cstj.andromiamobile.databinding.FragmentPortalManualBinding
@@ -47,11 +48,11 @@ class PortalManualFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnManualCode.setOnClickListener(){
-            Fuel.get("${Services.EXPLORATION_PORTAL_SERVICE}/${edtManualCode.text}").responseJson() { _, _, result ->
+            Fuel.get("${Services.EXPLORATION_PORTAL_SERVICE}/${edtManualCode.text}").header("Authorization" to "Bearer ${PortalManualFragmentArgs.fromBundle(requireActivity().intent.extras!!).accessToken}".replace("\"", "")).responseJson() { _, _, result ->
                 when(result){
                     is Result.Success -> {
                         val portal: Exploration = Json {ignoreUnknownKeys = true}.decodeFromString(result.value.content)
-                        val intent = DetailPortalActivity.newIntent(binding.root.context, portal)
+                        val intent = DetailPortalActivity.newIntent(binding.root.context, portal, PortalManualFragmentArgs.fromBundle(requireActivity().intent.extras!!).accessToken, PortalManualFragmentArgs.fromBundle(requireActivity().intent.extras!!).refreshToken)
                         startActivity(intent)
                     }
                     is Result.Failure -> {

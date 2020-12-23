@@ -2,13 +2,15 @@ package ca.qc.cstj.andromiamobile.helpers
 
 class Services {
     companion object {
-        const val MONSTER_SERVICE = "http://10.0.2.2:5600/monster/5fd7b38a88063e56a0d54fb5"
-        const val EXPLORATION_SERVICE = "http://10.0.2.2:5600/explorations/5fd7b38a88063e56a0d54fb5"
-        const val ELEMENT_SERVICE = "http://10.0.2.2:5600/elements/"
+        const val INVENTORY_SERVICE = "http://andromiac.us-3.evennode.com/account/inventory"
+        const val TEMP_SERVICE = "http://andromiac.us-3.evennode.com/account/inventory/test"
+        const val EXPLORATION_SERVICE = "http://andromiac.us-3.evennode.com/explorations/"
+        const val ELEMENT_SERVICE = "http://andromiac.us-3.evennode.com/elements/"
         const val YANNICK_PORTAL_SERVICE = "https://api.andromia.science/portals"
-        const val CAPTURE_SERVICE = "http://10.0.2.2:5600/capture/5fd7b38a88063e56a0d54fb5"
-        const val EXPLORATION_PORTAL_SERVICE = "http://10.0.2.2:5600/explorations/explore/5fd7b38a88063e56a0d54fb5"
-        const val CREATION_SERVICE = "http://10.0.2.2:5600/account/creationCompte"
-        const val CONNECTION_SERVICE = "http://10.0.2.2:5600/account/"
+        const val CAPTURE_SERVICE = "http://andromiac.us-3.evennode.com/monster/capture/"
+        const val EXPLORATION_PORTAL_SERVICE = "http://andromiac.us-3.evennode.com/explorations"
+        const val CREATION_SERVICE = "http://andromiac.us-3.evennode.com/account/creationCompte"
+        const val CONNECTION_SERVICE = "http://andromiac.us-3.evennode.com/account/"
+
     }
 }
