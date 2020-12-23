@@ -8,5 +8,6 @@ class Services {
         const val EXPLORATION_PORTAL_SERVICE = "http://andromiac.us-3.evennode.com/explorations"
         const val CREATION_SERVICE = "http://andromiac.us-3.evennode.com/account/creationCompte"
         const val CONNECTION_SERVICE = "http://andromiac.us-3.evennode.com/account/"
+        const val DECONNECTION_SERVICE = "http://andromiac.us-3.evennode.com/account/deconnexion"
     }
 }

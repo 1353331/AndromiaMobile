@@ -10,11 +10,11 @@
         android:id="@+id/txvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="32dp"
         android:text="@string/title"
+        android:textColor="@color/text_color"
         android:textSize="56sp"
         android:textStyle="bold"
-        android:textColor="@color/text_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -24,7 +24,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="100dp"
         android:text="Adresse courriel"
         android:textColor="@color/text_color"
         android:textSize="25sp"
@@ -54,7 +54,7 @@
         android:id="@+id/txvPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="64dp"
         android:text="@string/password"
         android:textColor="@color/text_color"
         android:textSize="25sp"
@@ -81,18 +81,6 @@
         app:layout_constraintTop_toBottomOf="@+id/txvPassword"
         app:passwordToggleEnabled="true"
         app:passwordToggleTint="@color/black" />
-
-    <Button
-        android:id="@+id/btnConnectionCheat"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="212dp"
-        android:onClick="btnConnectionCheatClick"
-        android:text="Connection cheat"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnConnection"

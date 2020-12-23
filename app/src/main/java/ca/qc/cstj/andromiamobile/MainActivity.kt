@@ -8,8 +8,10 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
@@ -25,16 +27,23 @@ import ca.qc.cstj.andromiamobile.helpers.RepositoryResult
 import ca.qc.cstj.andromiamobile.helpers.Services
 import ca.qc.cstj.andromiamobile.models.Exploration
 import ca.qc.cstj.andromiamobile.models.Inventory
+import ca.qc.cstj.andromiamobile.ui.account.LoginActivity
 import ca.qc.cstj.andromiamobile.ui.portals.DetailPortalActivity
 import com.github.kittinunf.fuel.Fuel
+import com.github.kittinunf.fuel.core.extensions.jsonBody
+import com.github.kittinunf.fuel.httpDelete
 import com.github.kittinunf.fuel.httpGet
+import com.github.kittinunf.fuel.httpPost
 import com.github.kittinunf.fuel.json.responseJson
 import com.github.kittinunf.result.Result
+import com.github.kittinunf.result.failure
+import com.github.kittinunf.result.success
 import com.google.zxing.integration.android.IntentIntegrator
 import kotlinx.android.synthetic.main.nav_header_main.*
 import kotlinx.serialization.decodeFromString
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import kotlinx.serialization.json.jsonObject
 import org.w3c.dom.Text
 
 class MainActivity : AppCompatActivity() {
@@ -60,11 +69,9 @@ class MainActivity : AppCompatActivity() {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(setOf(
-                R.id.nav_monsters, R.id.nav_explorations, R.id.nav_elements, R.id.nav_portal_manual), drawerLayout)
+                R.id.nav_monsters, R.id.nav_explorations, R.id.nav_elements, R.id.nav_portal_manual, R.id.nav_deconnection), drawerLayout)
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-
 
 
         // Code pour actualiser l'Inox et la Location à toutes les 3 secondes
@@ -134,6 +141,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+
     companion object {
         private const val INTERVAL: Long = 3000
         private const val INTENT_ACCESS = "accessToken"
@@ -144,6 +152,22 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra(INTENT_ACCESS, accessToken)
             intent.putExtra(INTENT_REFRESH, refreshToken)
             return intent
+        }
+    }
+
+    fun btnDeconnection(item: MenuItem) {
+
+        Services.DECONNECTION_SERVICE.httpDelete().header("Authorization" to "Bearer ${intent.getStringExtra(INTENT_ACCESS)}".replace("\"", "")).response{_,_,result ->
+            result.success {
+
+                val intent = LoginActivity.newIntent(this)
+                startActivity(intent)
+
+                Toast.makeText(this, "Vous avez bien été déconnecté", Toast.LENGTH_LONG).show()
+            }
+            result.failure {
+                Toast.makeText(this, "Échec de la déconnexion", Toast.LENGTH_LONG).show()
+            }
         }
     }
 }

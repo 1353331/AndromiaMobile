@@ -29,37 +29,6 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
     }
 
-    fun btnConnectionCheatClick(view: View?) {
-
-        //On va chercher un user dans la base de donnée, si la BD a été réinitialisé,
-        // on peut le créer dans l'application directement
-        val username = "explorateur@hotmail.com"
-        val password = "1234"
-
-        if(password.isNotBlank() && username.isNotBlank()) {
-            val service = Services.CONNECTION_SERVICE
-            val compte = "{\"email\":\"${username}\",\"password\":\"${password}\"}"
-
-            service.httpPost().jsonBody(compte).response{ _, response, result ->
-                result.success {
-                    val resulatBody = Json.parseToJsonElement(response.data.decodeToString())
-
-                    val accessToken = resulatBody.jsonObject["accessToken"].toString()
-                    val refreshToken = resulatBody.jsonObject["refreshToken"].toString()
-
-                    val intent = MainActivity.newIntent(this, accessToken, refreshToken)
-                    startActivity(intent)
-
-                }
-                result.failure {
-                    Toast.makeText(this, "Échec de connection: Compte inexistant ou mauvais mot de passe", Toast.LENGTH_LONG).show()
-                }
-            }
-        } else {
-            Toast.makeText(this, "Mauvais mot de passe", Toast.LENGTH_LONG).show()
-        }
-    }
-
     fun btnConnectionClick(view: View?) {
 
         val email = binding.edtEmail.editableText
@@ -79,6 +48,8 @@ class LoginActivity : AppCompatActivity() {
                     val intent = MainActivity.newIntent(this, accessToken, refreshToken)
                     startActivity(intent)
 
+                    email.clear()
+                    password.clear()
                 }
                 result.failure {
                     Toast.makeText(this, "Échec de connection: Compte inexistant ou mauvais mot de passe", Toast.LENGTH_LONG).show()
