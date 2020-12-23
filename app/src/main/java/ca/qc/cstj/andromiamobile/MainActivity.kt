@@ -164,6 +164,7 @@ class MainActivity : AppCompatActivity() {
                 startActivity(intent)
 
                 Toast.makeText(this, "Vous avez bien été déconnecté", Toast.LENGTH_LONG).show()
+                finish()
             }
             result.failure {
                 Toast.makeText(this, "Échec de la déconnexion", Toast.LENGTH_LONG).show()
