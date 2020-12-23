@@ -15,7 +15,6 @@ import kotlinx.serialization.json.Json
 object MonsterRepository {
     suspend fun getMonsters(accessToken:String): RepositoryResult<List<Monster>> {
         return withContext(Dispatchers.IO) {
-            //Fonctionne dans un autre thread
             val token = "Bearer $accessToken".replace("\"", "")
             val (_, _, result) = Services.INVENTORY_SERVICE.httpGet().header("Authorization" to token).responseJson()
 

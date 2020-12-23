@@ -42,10 +42,7 @@ class MonsterRecyclerViewAdapter(var monsters: List<Monster> = listOf()) : Recyc
     override fun getItemCount(): Int = monsters.size
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        //BINDING Ajout ici
         private val binding = ViewholderMonsterBinding.bind(view)
-        //TODO: Gestion de l'interface graphique d'une carte pour une planète
-        //Afficher son nom et sa température
         private val txvMonsterName: TextView = binding.txvMonsterName
         private val imgIconMonster: ImageView = binding.imgIconMonster
         private val imgAffinityList: ImageView = binding.imgAffinityList
@@ -55,7 +52,7 @@ class MonsterRecyclerViewAdapter(var monsters: List<Monster> = listOf()) : Recyc
 
             val requestOptions = RequestOptions().placeholder(circularProgressDrawable).error(R.drawable.logo)
 
-            Glide.with(binding.root.context) //Autre bibliothèque Picasso
+            Glide.with(binding.root.context)
                 .applyDefaultRequestOptions(requestOptions)
                 .load(monster.assets)
                 .into(imgIconMonster)

@@ -23,8 +23,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.AndromiaMobile.NoActionBar"
-            android:launchMode="singleInstance">
+            android:theme="@style/Theme.AndromiaMobile.NoActionBar">
         </activity>
 
         <activity

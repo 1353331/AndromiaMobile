@@ -43,7 +43,6 @@ class MonstersFragment : Fragment() {
 
         val topSpacingItemDecoration = TopSpacingItemDecoration(30)
 
-        //TODO: Afficher les planètes dans le Recycler View
         monsterRecyclerViewAdapter = MonsterRecyclerViewAdapter()
 
         binding.rcvMonsters.apply {

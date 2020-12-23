@@ -40,7 +40,6 @@ class DetailMonsterFragment: Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_monster_details, container, false)
         _binding = FragmentMonsterDetailsBinding.bind(view)
 
@@ -58,7 +57,7 @@ class DetailMonsterFragment: Fragment() {
         binding.txvMonsterCriticalDetails.text = "${(args.monster.critical*100).format(2)}%"
 
         //Affichage des différentes images
-        Glide.with(binding.root.context) //Autre bibliothèque Picasso
+        Glide.with(binding.root.context)
                 .load(args.monster.assets)
                 .into(binding.imgIconMonsterDetails)
 

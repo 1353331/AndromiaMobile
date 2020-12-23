@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
 
 
 
-        // Code pour actualiser l'Inox et la Location à toutes les X secondes
+        // Code pour actualiser l'Inox et la Location à toutes les 3 secondes
         val headerView: View = navView.getHeaderView(0)
         val txvExplorerInox: TextView = headerView.findViewById(R.id.txvExplorerInox)
         val txvExplorerLocation: TextView = headerView.findViewById(R.id.txvExplorerLocation)
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity() {
                         }
                     }
                 }
-                handler.postDelayed(this, 5000)
+                handler.postDelayed(this, INTERVAL)
             }
         })
 
@@ -120,6 +120,7 @@ class MainActivity : AppCompatActivity() {
                                 val portal: Exploration = Json {ignoreUnknownKeys = true}.decodeFromString(result.value.content)
                                 val intent = DetailPortalActivity.newIntent(this, portal,intent.getStringExtra(INTENT_ACCESS)!!,intent.getStringExtra(INTENT_REFRESH)!!)
                                 startActivity(intent)
+                                finish()
                             }
                             is Result.Failure -> {
                                 AlertDialogBuilder.showAlertDialog("Error", "No portal found", this)
@@ -134,7 +135,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     companion object {
-        private const val INTERVAL: Long = 1000*60
+        private const val INTERVAL: Long = 3000
         private const val INTENT_ACCESS = "accessToken"
         private const val INTENT_REFRESH = "refreshToken"
 

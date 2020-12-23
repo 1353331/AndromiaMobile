@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/titleCreation"
+        android:textColor="@color/text_color"
         android:textSize="42sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -25,6 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
+        android:textColor="@color/text_color"
         android:text="@string/username"
         android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,6 +58,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/email"
         android:textSize="25sp"
+        android:textColor="@color/text_color"
         app:layout_constraintStart_toStartOf="@+id/edtUsername"
         app:layout_constraintTop_toBottomOf="@+id/edtUsername" />
 
@@ -84,6 +87,7 @@
         android:layout_marginTop="16dp"
         android:textSize="25sp"
         android:text="@string/password"
+        android:textColor="@color/text_color"
         app:layout_constraintStart_toStartOf="@+id/edtEmail"
         app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
 
@@ -113,6 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:textSize="25sp"
+        android:textColor="@color/text_color"
         android:text="@string/confirmation"
         app:layout_constraintStart_toStartOf="@+id/edtPassword"
         app:layout_constraintTop_toBottomOf="@+id/edtPassword" />

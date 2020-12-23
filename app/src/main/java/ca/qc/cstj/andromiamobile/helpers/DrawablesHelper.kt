@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 
+//Permet d'aller chercher une resource Drawable avec son nom seulement
 class DrawablesHelper {
     companion object {
         fun getDrawable(c: Context, imgName:String) : Drawable {

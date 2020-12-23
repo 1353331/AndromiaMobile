@@ -41,7 +41,7 @@ class DetailPortalActivity : AppCompatActivity() {
         binding.txvPortalDestination.text = portal.destination
 
         binding.btnQuitExploration.setOnClickListener(){
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = MainActivity.newIntent(this, intent.getStringExtra(INTENT_ACCESS)!!, intent.getStringExtra(INTENT_REFRESH)!!)
             startActivity(intent)
             finish()
         }

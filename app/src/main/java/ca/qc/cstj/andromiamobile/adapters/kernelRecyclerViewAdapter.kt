@@ -29,7 +29,6 @@ class KernelRecyclerViewAdapter(var kernel: List<String> = listOf()) : RecyclerV
     override fun getItemCount(): Int = kernel.size
 
     inner class ViewHolder(val view: View) : RecyclerView.ViewHolder(view) {
-        //BINDING Ajout ici
         private val binding = ViewholderKernelBinding.bind(view)
 
         fun bind(affinity: String) {
