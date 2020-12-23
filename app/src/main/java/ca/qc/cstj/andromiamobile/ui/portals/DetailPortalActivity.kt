@@ -9,6 +9,7 @@ import android.view.View.*
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import ca.qc.cstj.andromiamobile.MainActivity
+import ca.qc.cstj.andromiamobile.adapters.ElementPortalRecyclerViewAdapter
 import ca.qc.cstj.andromiamobile.adapters.ElementRecyclerViewAdapter
 import ca.qc.cstj.andromiamobile.adapters.KernelRecyclerViewAdapter
 import ca.qc.cstj.andromiamobile.databinding.ActivityDetailPortalBinding
@@ -28,7 +29,7 @@ import kotlinx.serialization.json.Json
 
 class DetailPortalActivity : AppCompatActivity() {
     private lateinit var  binding: ActivityDetailPortalBinding
-    private lateinit var elementRecyclerViewAdapter: ElementRecyclerViewAdapter
+    private lateinit var elementPortalRecyclerViewAdapter: ElementPortalRecyclerViewAdapter
     private lateinit var kernelRecyclerViewAdapter: KernelRecyclerViewAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,12 +91,12 @@ class DetailPortalActivity : AppCompatActivity() {
             binding.txvInoxPortal.visibility = VISIBLE
             val topSpacingItemDecoration = TopSpacingItemDecoration(30)
 
-            elementRecyclerViewAdapter = ElementRecyclerViewAdapter()
+            elementPortalRecyclerViewAdapter = ElementPortalRecyclerViewAdapter()
             binding.rcvElementsPortal.apply{
                 layoutManager = LinearLayoutManager(binding.root.context)
-                adapter = elementRecyclerViewAdapter
+                adapter = elementPortalRecyclerViewAdapter
                 addItemDecoration(topSpacingItemDecoration)
-                elementRecyclerViewAdapter.elements = portal.vault.elements
+                elementPortalRecyclerViewAdapter.elements = portal.vault.elements
                 binding.rcvElementsPortal.adapter!!.notifyDataSetChanged()
             }
         }
